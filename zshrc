@@ -75,6 +75,17 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+export EDITOR=vim
+export LC_ALL=en_US.UTF-8
+export extendedglob
+export hist_ignore_all_dups
+export HISTSIZE=999999999
+export SAVEHIST=$HISTSIZE
+export TIME_STYLE=long-iso
+
+alias l='ls -lhv'
+alias cp='cp -i'
+alias mv='mv -i'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -100,37 +111,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-# User configuration
-export EDITOR=vim
-export LC_ALL=en_US.UTF-8
-export extendedglob
-export hist_ignore_all_dups
-export HISTSIZE=999999999
-export SAVEHIST=$HISTSIZE
-export TIME_STYLE=long-iso
-
-alias l='ls -lhv'
-alias cp='cp -i'
-alias mv='mv -i'
-
-source $HOME/apps/gromacs/2021.5/bin/GMXRC.zsh
-alias gmx='gmx_mpi -quiet'
-
-export PYTHONPATH=$HOME/Projects/mstools:$PYTHONPATH
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/zheng/apps/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/fs/home/cvsze/apps/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/zheng/apps/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/zheng/apps/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/fs/home/cvsze/apps/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/fs/home/cvsze/apps/mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/home/zheng/apps/miniconda3/bin:$PATH"
+        export PATH="/fs/home/cvsze/apps/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+source $HOME/.env
 

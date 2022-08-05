@@ -1,0 +1,25 @@
+#%Module 1.0
+#
+# module for use with 'environment-modules' package:
+#
+
+set name openmpi
+set version 4.1
+set release 0
+
+conflict $name impi
+
+
+set          	topdir                	/share/apps/openmpi/$version.$release
+
+setenv          MPI_HOME                $topdir
+setenv          MPICC                   mpicc
+setenv          MPICXX                  mpicxx
+setenv          MPIFC                   mpifort
+prepend-path    PATH                    $topdir/bin
+prepend-path    CPATH			        $topdir/include
+prepend-path    LIBRARY_PATH         	$topdir/lib
+prepend-path    LD_LIBRARY_PATH         $topdir/lib
+prepend-path    MANPATH                 $topdir/share/man
+
+module-whatis   "Set the environment for using OpenMPI $version.$release"

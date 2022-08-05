@@ -1,0 +1,25 @@
+#%Module 1.0
+#
+# module for use with 'environment-modules' package:
+#
+
+set name	gromacs
+set version	2016.6
+
+conflict $name
+
+set		topdir			/share/apps/$name/$version
+
+module load gcc openmpi fftw cuda
+
+
+prepend-path	PATH			$topdir/bin
+setenv		GMXBIN			$topdir/bin
+setenv		GMXMAN		        $topdir/share/man
+setenv		GMXDATA		        $topdir/share/$name
+setenv		GMXLDLIB		$topdir/lib64
+prepend-path	LIBRARY_PATH		$topdir/lib64
+prepend-path	CPATH			$topdir/include
+prepend-path    MANPATH		        $topdir/share/man
+
+module-whatis   "Set up $name $version"

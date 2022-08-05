@@ -26,7 +26,7 @@ set numberwidth=3		" minimum num of cols to reserve for line numbers
 set nobackup			" disable backup files (filename~)
 set showmatch			" show matching brackets (),{},[]
 set ww=h,l,<,>,[,]		" whichwrap -- left/right keys can traverse up/down
-set wrap				" wrap long lines to fit terminal width
+set nowrap				" wrap long lines to fit terminal width
 set ttyfast				" tell vim we're using a fast terminal for redraws
 set autoread			" reload file if vim detects it changed elsewhere
 set wildmenu			" enhanced tab-completion shows all matching cmds
@@ -39,7 +39,7 @@ set previewheight=5		" default height for a preview window (def:12)
 syntax on				" enable syntax highlighting
 filetype plugin indent on	" enable filetype-sensitive plugins and indenting
 
-"color
+" color
 hi LineNr ctermfg=gray guifg=gray
 hi Pmenu ctermfg=white ctermbg=darkgray guifg=white guibg=darkgray
 hi PmenuSel ctermfg=white ctermbg=magenta guifg=white guibg=magenta
@@ -62,12 +62,14 @@ set showmode			" show mode in status line
 set showcmd				" show partial commands in status line
 " left: fileencoding, fileformat, filetype, RO/HELP/PREVIEW, modified flag, filepath
 " right: buffer num, lines/total, cols/virtual, display percentage
-set statusline=%([%{&fenc}%)%(:%{&ff}]%)%(:%y%)\ %r%h%w\ %#Error#%m%#Statusline#\ %F\ %=buff[%1.3n]\ %1.7l/%L,%1.7c%V\ [%P]
+"set statusline=%([%{&fenc}%)%(:%{&ff}]%)%(:%y%)\ %r%h%w\ %#Error#%m%#Statusline#\ %F\ %=buff[%1.3n]\ %1.7l/%L,%1.7c%V\ [%P]
+set statusline=%([%{&fenc}%)%(:%{&ff}]%)%(:%y%)\ %{fugitive#statusline()}\ %r%h%w\ %#Error#%m%#Statusline#\ %F\ %=buff[%1.3n]\ %1.7l/%L,%1.7c%V\ [%P]
+
 
 
 " tabs and indenting ---------------------------------------------------
 
-set noexpandtab			  " insert spaces instead of tabs
+set expandtab			" insert spaces instead of tabs
 set tabstop=4			" n space tab width
 set shiftwidth=4		" allows the use of < and > for VISUAL indenting
 set softtabstop=4		" counts n spaces when DELETE or BCKSPCE is used
@@ -129,28 +131,6 @@ map <a-2> 2gt
 
 highlight RedundantSpaces ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t/
-
-
-" gvim for windows
-if has ("gui_running")
-	" only initialize window size if has not been initialized yet
-	if !exists ("s:my_windowInitialized_variable")
-		let s:my_windowInitialized_variable=1
-	endif
-	if has ("win32")
-		source $VIMRUNTIME/mswin.vim
-		behave mswin
-		" deal with the garbled word
-		language messages zh_CN.utf-8
-		set guifont=DejaVu_Sans_Mono:h10:cANSI
-		set guifontwide=STXihei:h10:cGB2312
-	endif
-	set guioptions-=m
-	set guioptions-=T
-	winpos 420 150
-	set lines=40 columns=120
-	set guicursor=a:block-blinkon0
-endif
 
 
 " NerdTree

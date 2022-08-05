@@ -1,0 +1,18 @@
+#%Module 1.0
+#
+# module for use with 'environment-modules' package:
+#
+
+set name gaussian
+set version 16A03
+
+conflict $name
+
+set		topdir			/share/apps/gaussian/g16-a03_sse42/g16
+
+setenv		G16ROOT		$topdir
+setenv		GAUSS_EXEDIR	$topdir
+setenv		GAUSS_SCRDIR	/dev/shm
+prepend-path	PATH		$topdir
+
+module-whatis   "Set up $version" 

@@ -1,0 +1,17 @@
+#%Module 1.0
+#
+# module for use with 'environment-modules' package:
+#
+
+set name	lammps
+set version	29Oct20
+
+module load gcc openmpi fftw
+
+conflict $name
+
+set		topdir			/share/apps/$name/$version
+
+prepend-path	PATH			$topdir
+
+module-whatis   "Set up $name $version"

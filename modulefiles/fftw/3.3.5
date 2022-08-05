@@ -1,0 +1,23 @@
+#%Module 1.0
+#
+# module for use with 'environment-modules' package:
+#
+
+set name fftw
+set version 3.3
+set release 5
+
+conflict $name
+
+
+set		topdir			/share/apps/$name/$version.$release
+
+setenv		FFTWROOT		$topdir
+prepend-path	PATH			$topdir/bin
+prepend-path	CPATH			$topdir/include
+prepend-path    LIBRARY_PATH	$topdir/lib
+prepend-path    LD_LIBRARY_PATH	$topdir/lib
+prepend-path    INFOPATH	        $topdir/info
+prepend-path    MANPATH		        $topdir/man
+
+module-whatis   "Set up FFTW $version.$release."
