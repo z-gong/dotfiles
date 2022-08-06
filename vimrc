@@ -40,7 +40,7 @@ syntax on				" enable syntax highlighting
 filetype plugin indent on	" enable filetype-sensitive plugins and indenting
 
 " color
-hi LineNr ctermfg=gray guifg=gray
+hi LineNr ctermfg=darkgray guifg=gray
 hi Pmenu ctermfg=white ctermbg=darkgray guifg=white guibg=darkgray
 hi PmenuSel ctermfg=white ctermbg=magenta guifg=white guibg=magenta
 
