@@ -80,12 +80,12 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 export EDITOR=vim
-export LC_ALL=en_US.UTF-8
-export extendedglob
-export hist_ignore_all_dups
+export LC_ALL=C.UTF-8
+export TIME_STYLE=long-iso
 export HISTSIZE=999999999
 export SAVEHIST=$HISTSIZE
-export TIME_STYLE=long-iso
+setopt extendedglob
+setopt hist_ignore_all_dups
 
 alias l='ls -lhv'
 alias cp='cp -i'
